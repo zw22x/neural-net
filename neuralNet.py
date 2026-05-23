@@ -1,6 +1,7 @@
 import numpy as np
+from sklearn.datasets import make_moons
 
-input_size, hidden_size, output_size = 4, 8, 1
+input_size, hidden_size, output_size = 2, 8, 1
 
 # initialize weights and biases
 W1 = np.random.randn(input_size, hidden_size) * 0.01
@@ -72,14 +73,10 @@ def train(X, y_true, epochs, learning_rate):
 
 # example usage
 if __name__ == "__main__":
-    # dummy dataset
-    X = np.array([[0, 0, 0, 0],
-                  [0, 0, 0, 1],
-                  [0, 0, 1, 0],
-                  [0, 1, 0, 0],
-                  [1, 0, 0, 0],
-                  [1, 1, 1, 1]])
-    y_true = np.array([[0], [1], [1], [1], [1], [0]])
+   
+    X, y = make_moons(n_samples=1000, noise=0.1, random_state=42)
+    y = y.reshape(-1, 1) 
 
-    train(X, y_true, epochs=1000, learning_rate=0.01)
-
+    train(X, y, epochs=10000, learning_rate=0.1)
+    # A1, A2, Z1, Z2 = forward(X)
+    # print("predictions: ", A2)
