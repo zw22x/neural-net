@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Neural Net Visualizer</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar" aria-label="Visualizer controls">
+        <div>
+          <p class="eyebrow">2 inputs - 8 hidden neurons - 1 output</p>
+          <h1>Neural Net Visualizer</h1>
+        </div>
+        <div class="controls">
+          <label>
+            Test
+            <select id="testSelect"></select>
+          </label>
+          <label>
+            Epochs
+            <input id="epochsInput" type="number" min="1" max="20000" step="100">
+          </label>
+          <label>
+            Learning rate
+            <input id="learningRateInput" type="number" min="0.001" max="1" step="0.001">
+          </label>
+          <button id="runButton" type="button">Train</button>
+        </div>
+      </section>
+
+      <section class="status-strip" aria-live="polite">
+        <div>
+          <span class="metric-label">Result</span>
+          <strong id="passText">Waiting</strong>
+        </div>
+        <div>
+          <span class="metric-label">Accuracy</span>
+          <strong id="accuracyText">--</strong>
+        </div>
+        <div>
+          <span class="metric-label">Loss</span>
+          <strong id="lossText">--</strong>
+        </div>
+        <p id="testSummary"></p>
+      </section>
+
+      <section class="grid">
+        <article class="panel decision-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Classification map</p>
+              <h2>Decision Boundary</h2>
+            </div>
+          </div>
+          <canvas id="decisionCanvas" width="720" height="520"></canvas>
+        </article>
+
+        <article class="panel network-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Weight strength</p>
+              <h2>Network Flow</h2>
+            </div>
+          </div>
+          <canvas id="networkCanvas" width="620" height="520"></canvas>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Training path</p>
+              <h2>Loss Curve</h2>
+            </div>
+          </div>
+          <canvas id="lossCanvas" width="620" height="300"></canvas>
+        </article>
+
+        <article class="panel predictions-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Final outputs</p>
+              <h2>Predictions</h2>
+            </div>
+          </div>
+          <div id="predictionList" class="prediction-list"></div>
+        </article>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
