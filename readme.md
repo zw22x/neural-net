@@ -23,7 +23,10 @@ A neural network built from scratch using only NumPy — no PyTorch, no TensorFl
 
 ```bash
 pip install numpy scikit-learn
-python app.py
+python app.py 
+or python3 webapp/server.py
 ```
+
+- I got codex GPT 5.5 to implement the webapp for the neural net.
 
 Open `http://127.0.0.1:8000` in your browser.
